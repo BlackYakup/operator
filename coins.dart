@@ -1,7 +1,7 @@
 class CoinStack {
-  List<int> coinStack;
+  final List<int> coinStack;
 
-  CoinStack(this.coinStack);
+  CoinStack(List<int> coinStack) : coinStack = List.unmodifiable(coinStack);
 
   int get _value {
     int sum = 0;
