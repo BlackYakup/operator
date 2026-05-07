@@ -4,16 +4,19 @@ void main() {
   var a = CoinStack([1, 2, 5]);
   var b = CoinStack([2]);
 
-  print(a.total());
+  print(a > b);
+  print(a < b);
+  print(a >= b);
+  print(a <= b);
+  print(a == b);
+  print(a == CoinStack([8]));
 
-  print(a.isGreaterThan(b));
-
-  var c = a.add(b);
+  var c = a + b;
   print(c.coinStack);
 
-  var d = a.subtract(b);
+  var d = a - b;
   print(d?.coinStack);
 
-  var e = a.subtract(CoinStack([10]));
+  var e = a - CoinStack([10]);
   print(e);
 }

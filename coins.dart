@@ -3,29 +3,47 @@ class CoinStack {
 
   CoinStack(this.coinStack);
 
-  int total() {
+  int get _value {
     int sum = 0;
 
-    for(int c in coinStack) {
+    for (int c in coinStack) {
       sum = sum + c;
     }
 
     return sum;
   }
 
-  bool isGreaterThan(CoinStack other) {
-    return total() > other.total();
+  bool operator >(CoinStack other) {
+    return _value > other._value;
   }
 
-  bool isLessThan(CoinStack other) {
-    return total() < other.total();
+  bool operator <(CoinStack other) {
+    return _value < other._value;
   }
 
-  CoinStack add(CoinStack other) {
+  bool operator >=(CoinStack other) {
+    return _value >= other._value;
+  }
+
+  bool operator <=(CoinStack other) {
+    return _value <= other._value;
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is CoinStack && _value == other._value;
+  }
+
+  @override
+  int get hashCode {
+    return _value.hashCode;
+  }
+
+  CoinStack operator +(CoinStack other) {
     return CoinStack([...coinStack, ...other.coinStack]);
   }
 
-  CoinStack? subtract(CoinStack other) {
+  CoinStack? operator -(CoinStack other) {
     List<int> result = List.from(coinStack);
 
     for (int c in other.coinStack) {
@@ -37,5 +55,10 @@ class CoinStack {
     }
 
     return CoinStack(result);
+  }
+
+  @override
+  String toString() {
+    return coinStack.toString();
   }
 }
